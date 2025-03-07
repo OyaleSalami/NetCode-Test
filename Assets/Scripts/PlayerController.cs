@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("UI Controls")]
+    [SerializeField] PButton leftButton;
+    [SerializeField] PButton rightButton;
+
     [SerializeField] float movementSpeed = 5.0f;
 
     [Header("Canon Firing")]
@@ -19,17 +24,21 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        //Left & Right Movement
         transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * movementSpeed * Vector3.left);
-        
-        if ((transform.position.x <= -3))
+
+        if(leftButton.pressed)
         {
-            transform.position = new Vector3(-3f, transform.position.y, transform.position.z);
+            MoveLeft();
         }
 
-        if ((transform.position.x >= 3))
+        if(rightButton.pressed)
         {
-            transform.position = new Vector3(3f, transform.position.y, transform.position.z);
+            MoveRight();
         }
+
+        //Clamp the object position
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -3, 3), transform.position.y, transform.position.z);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
