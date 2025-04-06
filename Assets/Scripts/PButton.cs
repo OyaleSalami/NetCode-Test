@@ -9,7 +9,7 @@ public class PButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     void Update()
     {
-        if(pressed)
+        if (pressed)
         {
             onClick.Invoke();
         }

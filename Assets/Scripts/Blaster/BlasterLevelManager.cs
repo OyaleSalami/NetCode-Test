@@ -43,7 +43,6 @@ public class BlasterLevelManager : NetworkBehaviour
             leftButton.onClick.AddListener(playerObject.MoveLeft);
             rightButton.onClick.AddListener(playerObject.MoveRight);
             //TODO: fireButton.onClick.AddListener(playerObject.Fire);
-            print("Added Touch Handlers!");
         }
     }
 }
