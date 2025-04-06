@@ -192,6 +192,7 @@ MonoBehaviour:
   sides:
   - {fileID: 1260815924}
   - {fileID: 1572665895}
+  coolDownImage: {fileID: 1390022152}
   fireButton: {fileID: 276365507}
   leftButton: {fileID: 272294999}
   rightButton: {fileID: 256523434}

@@ -7,6 +7,7 @@ public class BlasterLevelManager : NetworkBehaviour
     public Transform[] sides;
 
     [Header("Touch Controls")]
+    [SerializeField] Image coolDownImage;
     [SerializeField] Button fireButton;
     [SerializeField] PButton leftButton;
     [SerializeField] PButton rightButton;
@@ -42,7 +43,8 @@ public class BlasterLevelManager : NetworkBehaviour
         {
             leftButton.onClick.AddListener(playerObject.MoveLeft);
             rightButton.onClick.AddListener(playerObject.MoveRight);
-            //TODO: fireButton.onClick.AddListener(playerObject.Fire);
+            fireButton.onClick.AddListener(playerObject.Fire);
+            playerObject.coolDownImage = coolDownImage;
         }
     }
 }

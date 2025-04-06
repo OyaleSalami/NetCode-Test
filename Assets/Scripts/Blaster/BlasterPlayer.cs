@@ -11,10 +11,11 @@ public class BlasterPlayer : NetworkBehaviour
     [SerializeField] float movementSpeed = 5.0f;
 
     [Header("Canon")]
+    public Image coolDownImage;
     [SerializeField] float blastForce = 500.0f;
     [SerializeField] GameObject canonPrefab;
+    [SerializeField] Transform canonParent;
     [SerializeField] Transform firingPoint;
-    [SerializeField] Image coolDownImage;
     [SerializeField] float coolDownTime = 1f;
     private bool canShoot = true;
     private float c = 0;
@@ -89,7 +90,7 @@ public class BlasterPlayer : NetworkBehaviour
     {
         if (canShoot)
         {
-            var temp = Instantiate(canonPrefab, firingPoint);
+            var temp = Instantiate(canonPrefab, firingPoint.position, Quaternion.identity, canonParent);
             temp.GetComponent<Rigidbody>().AddForce(Vector3.forward * blastForce);
             canShoot = false;
             c = 0f;
